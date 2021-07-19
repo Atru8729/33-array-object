@@ -21,19 +21,19 @@ jonas.firstCar();
 jonas.lastCar();
 // // Tesla S (silver)
 
-// jonas.apartmentPrice();
+jonas.apartmentPrice();
 // // Jonas has an apartment for 500000 Euros.
 
-// jonas.chidren();
+jonas.children();
 // // This is a children of Jonas Jonaitis:
 // // 1. Ona Onaite (70)
-// // 2. Petras Patraitis (80)
+// // 2. Petras Petraitis (80)
 // // 3. Alfas Marsietis (50)
 
-// jonas.aliveChildren();
+jonas.aliveChildren();
 // // Jonas Jonatis has only 2 children alive.
 
-// jonas.autopark();
+jonas.autopark();
 // // This is Jonas cars:
 // // 1. Audi 80 (red)
 // // 2. Volvo S40 (black)
