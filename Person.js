@@ -59,6 +59,10 @@ class Person {
             console.log(`${count}. ${car.brand} ${car.model} (${car.color})`);
         }
     }
+    wherePersonLive() {
+        const adresas = this.data.adress;
+        console.log(`${this.data.firstname} is living at ${adresas.city} ${adresas.street} ${adresas.houseNumber}`);
+    }
 }
 
 module.exports = Person;

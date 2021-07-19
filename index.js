@@ -39,7 +39,7 @@ jonas.autopark();
 // // 2. Volvo S40 (black)
 // // 3. Tesla S (silver)
 
-// jonas.wherePersonLive();
+jonas.wherePersonLive();
 // // Jonas is living at Vilnius Gedimino pr. 1
 
 // jonas.carPrice(0);
