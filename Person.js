@@ -67,6 +67,35 @@ class Person {
         const car = this.data.cars[index];
         console.log(`${car.brand} ${car.model} is purchased for ${car.price} ${car.currency}.`);
     }
+    totalSpentForCars(arSpausdinti = true) {
+        let totalCarsPrice = 0;
+        for (let i = 0; i < this.data.cars.length; i++) {
+            const car = this.data.cars[i];
+            if (car.currency === 'Litas') {
+                totalCarsPrice += car.price / 3.45;
+            } else {
+                totalCarsPrice += car.price;
+            }
+            if (arSpausdinti) {
+
+                console.log(`${this.data.firstname} has spent ${totalCarsPrice.toFixed(2)} Euros for his cars.`);
+            }
+        }
+        return totalCarsPrice;
+    }
+
+    totalSpentForApartments(arSpausdinti = true) {
+        const apartmentKaina = this.data.adress.price;
+        if (arSpausdinti) {
+            console.log(`${this.data.firstname} has spent ${apartmentKaina.toFixed(2)} Euros for his apartments.`);
+        }
+        return apartmentKaina;
+    }
+
+    totalSpendings() {
+        const bendrosIslaidos = this.totalSpentForCars(false) + this.totalSpentForApartments(false);
+        console.log(`${this.data.firstname} has spent ${bendrosIslaidos.toFixed(2)} Euros tottaly.`);
+    }
 }
 
 module.exports = Person;
