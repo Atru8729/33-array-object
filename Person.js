@@ -75,10 +75,9 @@ class Person {
                 totalCarsPrice += car.price / 3.45;
             } else {
                 totalCarsPrice += car.price;
-            }
-            if (arSpausdinti) {
-
-                console.log(`${this.data.firstname} has spent ${totalCarsPrice.toFixed(2)} Euros for his cars.`);
+                if (arSpausdinti) {
+                    console.log(`${this.data.firstname} has spent ${totalCarsPrice.toFixed(2)} Euros for his cars.`);
+                }
             }
         }
         return totalCarsPrice;
