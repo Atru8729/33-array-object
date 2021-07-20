@@ -42,13 +42,13 @@ jonas.autopark();
 jonas.wherePersonLive();
 // // Jonas is living at Vilnius Gedimino pr. 1
 
-// jonas.carPrice(0);
+jonas.carPrice(0);
 // // Audi 80 is purchased for 1000 Litas.
 
-// jonas.carPrice(1);
+jonas.carPrice(1);
 // // Volvo S40 is purchased for 5000 Litas.
 
-// jonas.carPrice(2);
+jonas.carPrice(2);
 // // Tesla S is purchased for 100000 Euros.
 
 // jonas.totalSpentForCars();

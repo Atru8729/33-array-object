@@ -63,6 +63,10 @@ class Person {
         const adresas = this.data.adress;
         console.log(`${this.data.firstname} is living at ${adresas.city} ${adresas.street} ${adresas.houseNumber}`);
     }
+    carPrice(index) {
+        const car = this.data.cars[index];
+        console.log(`${car.brand} ${car.model} is purchased for ${car.price} ${car.currency}.`);
+    }
 }
 
 module.exports = Person;
