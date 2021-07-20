@@ -86,7 +86,7 @@ class Person {
     totalSpentForApartments(arSpausdinti = true) {
         const apartmentKaina = this.data.adress.price;
         if (arSpausdinti) {
-            console.log(`${this.data.firstname} has spent ${apartmentKaina.toFixed(2)} Euros for his apartments.`);
+            console.log(`${this.data.firstname} has spent ${apartmentKaina} Euros for his apartments.`);
         }
         return apartmentKaina;
     }
