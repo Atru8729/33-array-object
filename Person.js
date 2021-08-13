@@ -1,99 +1,135 @@
 class Person {
     constructor(data) {
-        this.data = data;
-
+        this.firstname = data.firstname;
+        this.lastname = data.lastname;
+        this.age = data.age;
+        this.childrenList = data.children;
+        this.address = data.address;
+        this.cars = data.cars;
     }
+
     fullName() {
-        console.log(`${this.data.firstname} ${this.data.lastname}`);
-    }
-    intro() {
-        console.log(`Hi, my name is ${this.data.firstname} and I am ${this.data.age} years old.`);
-    }
-    firstChild() {
-        const child = this.data.children[0];
-        console.log(`${child.firstname} ${child.lastname} (${child.age})`);
-    }
-    lastChild() {
-        const child = this.data.children[2];
-        console.log(`${child.firstname} ${child.lastname} (${child.age})`);
-    }
-    firstCar() {
-        const car = this.data.cars[0];
-        console.log(`${car.brand} ${car.model} (${car.color})`);
-    }
-    lastCar() {
-        const car = this.data.cars[2];
-        console.log(`${car.brand} ${car.model} (${car.color})`);
-    }
-    apartmentPrice() {
-        const apartment = this.data.adress;
-        console.log(`${this.data.firstname} has an apartment for ${apartment.price} ${apartment.currency}.`);
-    }
-    children() {
-        const fullName = `${this.data.firstname} ${this.data.lastname}`;
-        console.log(`This is a children of ${fullName}:`);
-        let count = 0;
-        for (let i = 0; i < this.data.children.length; i++) {
-            const child = this.data.children[i];
-            count++;
-            console.log(`${count}. ${child.firstname} ${child.lastname} (${child.age})`);
-        }
-    }
-    aliveChildren() {
-        const fullName = `${this.data.firstname} ${this.data.lastname}`;
-        let count = 0;
-        for (let i = 0; i < this.data.children.length; i++) {
-            const child = this.data.children[i];
-            if (child.alive === true) {
-                count++;
-            }
-        }
-        console.log(`${fullName} has only ${count} children alive`);
-    }
-    autopark() {
-        console.log(`This is ${this.data.firstname} cars:`);
-        let count = 0;
-        for (let i = 0; i < this.data.cars.length; i++) {
-            const car = this.data.cars[i];
-            count++;
-            console.log(`${count}. ${car.brand} ${car.model} (${car.color})`);
-        }
-    }
-    wherePersonLive() {
-        const adresas = this.data.adress;
-        console.log(`${this.data.firstname} is living at ${adresas.city} ${adresas.street} ${adresas.houseNumber}`);
-    }
-    carPrice(index) {
-        const car = this.data.cars[index];
-        console.log(`${car.brand} ${car.model} is purchased for ${car.price} ${car.currency}.`);
-    }
-    totalSpentForCars(arSpausdinti = true) {
-        let totalCarsPrice = 0;
-        for (let i = 0; i < this.data.cars.length; i++) {
-            const car = this.data.cars[i];
-            if (car.currency === 'Litas') {
-                totalCarsPrice += car.price / 3.45;
-            } else {
-                totalCarsPrice += car.price;
-                if (arSpausdinti) {
-                    console.log(`${this.data.firstname} has spent ${totalCarsPrice.toFixed(2)} Euros for his cars.`);
-                }
-            }
-        }
-        return totalCarsPrice;
+        const fn = this.firstname + ' ' + this.lastname;
+        console.log(fn);
+        return fn;
     }
 
-    totalSpentForApartments(arSpausdinti = true) {
-        const apartmentKaina = this.data.adress.price;
-        if (arSpausdinti) {
-            console.log(`${this.data.firstname} has spent ${apartmentKaina} Euros for his apartments.`);
+    intro() {
+        console.log(`Hi, my name is ${this.firstname} and I am ${this.age} years old.`);
+    }
+
+    firstChild() {
+        console.log(this.childInfo(0));
+    }
+
+    lastChild() {
+        const lastChildIndex = this.childrenList.length - 1;
+        console.log(this.childInfo(lastChildIndex));
+    }
+
+    childInfo(childIndex) {
+        const child = this.childrenList[childIndex];
+        return `${child.firstname} ${child.lastname} (${child.age})`;
+    }
+
+    firstCar() {
+        console.log(this.carInfo(0));
+    }
+
+    lastCar() {
+        const lastCarIndex = this.cars.length - 1;
+        console.log(this.carInfo(lastCarIndex));
+    }
+
+    carInfo(carIndex) {
+        const car = this.cars[carIndex];
+        return `${car.brand} ${car.model} (${car.color})`;
+    }
+
+    apartmentPrice() {
+        console.log(`${this.firstname} has an apartment for ${this.address.price} ${this.address.currency}.`);
+    }
+
+    children() {
+        console.log(`This is a children of ${this.fullName()}:`);
+        for (const childIndex in this.childrenList) {
+            const aboutChild = this.childInfo(childIndex);
+            console.log(`${+childIndex + 1}. ${aboutChild}`);
         }
-        return apartmentKaina;
+    }
+
+    aliveChildren() {
+        let aliveCount = 0;
+
+        for (const child of this.childrenList) {
+            if (child.alive) {
+                aliveCount++;
+            }
+        }
+
+        console.log(`${this.fullName()} has only ${aliveCount} children alive.`);
+    }
+
+    autopark() {
+        console.log(`This is ${this.firstname} cars:`);
+        for (const carIndex in this.cars) {
+            const aboutCar = this.carInfo(carIndex);
+            console.log(`${+carIndex + 1}. ${aboutCar}`);
+        }
+    }
+
+    wherePersonLive() {
+        const address = `${this.address.city} ${this.address.street} ${this.address.houseNumber}`;
+        console.log(`${this.firstname} is living at ${address}`);
+    }
+
+    carPrice(carIndex) {
+        const car = this.cars[carIndex];
+        const carDetails = `${car.brand} ${car.model}`;
+        const carPrice = `${car.price} ${car.currency}`;
+
+        console.log(`${carDetails} is purchased for ${carPrice}.`);
+    }
+
+    totalSpentForCars(printMessage = true) {
+        let amount = 0;
+
+        for (const car of this.cars) {
+            amount += this.convertCurrency(car.price, car.currency);
+        }
+
+        if (printMessage) {
+            console.log(`${this.firstname} has spent ${amount.toFixed(2)} Euros for his cars.`);
+        }
+        return amount;
+    }
+
+    convertCurrency(price, currency) {
+        if (currency === 'Euros') {
+            return price;
+        }
+
+        if (currency === 'Litas') {
+            return price / 3.45;
+        }
+    }
+
+    totalSpentForApartments(printMessage = true) {
+        let amount = 0;
+
+        for (const apartment of [this.address]) {
+            amount += this.convertCurrency(apartment.price, apartment.currency);
+        }
+
+        if (printMessage) {
+            console.log(`${this.firstname} has spent ${amount} Euros for his apartments.`);
+        }
+        return amount;
     }
 
     totalSpendings() {
-        const bendrosIslaidos = this.totalSpentForCars(false) + this.totalSpentForApartments(false);
-        console.log(`${this.data.firstname} has spent ${bendrosIslaidos.toFixed(2)} Euros tottaly.`);
+        const total = this.totalSpentForCars(false) + this.totalSpentForApartments(false);
+        console.log(`${this.firstname} has spent ${total.toFixed(2)} Euros tottaly.`);
     }
 }
 
